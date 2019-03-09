@@ -12,6 +12,7 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 8.0,
       child: InkWell(
         onLongPress: longTrue ? callback : () {},
         onTap: !longTrue ? callback : () {},

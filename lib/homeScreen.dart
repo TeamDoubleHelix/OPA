@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:opa/button.dart';
 import 'package:intl/intl.dart';
-
+import 'package:intl/date_symbol_data_local.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen(this.name);
@@ -11,78 +13,82 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  DateFormat dateFormat;
+  DateFormat timeFormat;
 
+Timer timer;
 
-static var now = new DateTime.now();
-String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
-String formattedHour = DateFormat('kk').format(now);
 @override
-  void setState(fn) {
-    // TODO: implement setState
-    super.setState(fn);
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initializeDateFormatting();
+    dateFormat = new DateFormat.yMMMMd('cs');
+    timeFormat = new DateFormat.Hm('cs');
 
+    timer = new Timer.periodic(const Duration(seconds : 1), refresh);
+    
   }
-  @override 
+
+  void refresh(Timer a) {
+    setState(() {
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Column(
-      children: <Widget>[
-        Container(
-          
-          
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-
-                child: Text(  
-
-             "Il-waranofsinhar it-tajjeb +$widget.name",
-                textAlign: TextAlign.center,
-=======
+    var dateTime = new DateTime.now();
     return Scaffold(
-          body: Column(
+      body: Column(
         children: <Widget>[
           Container(
-            
-            
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.fromLTRB(0.0,30.0,0.0,0.0),
                   child: Text(
-
-               "BONGU ",
-                  
-                  style: Theme.of(context).textTheme.body2,
-                  textScaleFactor: 3.7,
-              ),
+                    "Merħba ${widget.name} ",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.body2,
+                    textScaleFactor: 3.7,
+                  ),
                 ),
+                Row( children: <Widget>[
+                  Icon(Icons.wb_sunny, size: 70,
+               ),
+               Icon(Icons.arrow_forward, size: 70),
+               Icon(Icons.cloud, size: 70),
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,),
+               
                 Text(
+                  timeFormat.format(dateTime),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.body2,
+                  textScaleFactor: 7,
+                  
+                ),
 
-                formattedDate,
-                
->>>>>>> master
-                style: Theme.of(context).textTheme.body2,
-                textScaleFactor: 3.5,
-              ),
               ],
             ),
             decoration: BoxDecoration(color: Colors.amber),
-            
             width: double.infinity,
           ),
           GridView.count(
+            
             mainAxisSpacing: 15.0,
             padding: EdgeInsets.all(10.0),
             shrinkWrap: true,
             crossAxisCount: 2,
             childAspectRatio: 0.8,
             children: <Widget>[
-              MyButton(Icons.calendar_view_day, Colors.teal, 'Events',false, (){}),
-              MyButton(Icons.insert_emoticon, Colors.blue, 'Activity',false, (){}),
-              MyButton(Icons.perm_contact_calendar, Colors.orange,'Friends',false, (){}),
-              MyButton(Icons.accessible, Colors.red[700], 'S.O.S',true, (){}),
+              MyButton(
+                  Icons.calendar_view_day, Colors.teal, 'Events', false, () {}),
+              MyButton(
+                  Icons.insert_emoticon, Colors.blue, 'Activity', false, () {}),
+              MyButton(Icons.perm_contact_calendar, Colors.orange, 'Friends',
+                  false, () {}),
+              MyButton(Icons.accessible, Colors.red[700], 'S.O.S', true, () {}),
             ],
           ),
         ],
@@ -90,4 +96,3 @@ String formattedHour = DateFormat('kk').format(now);
     );
   }
 }
-

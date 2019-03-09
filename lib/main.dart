@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Elderly',
       theme: ThemeData(
+        fontFamily: 'Helvetica',
         primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Elderly'),
@@ -40,14 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-      home: Scaffold(
-        body: HomeScreen("Cettina"),
-      ),
-=======
-      home: HomeScreen(),
-    
->>>>>>> master
+      home: HomeScreen("Ċettina"),
     );
       
   }

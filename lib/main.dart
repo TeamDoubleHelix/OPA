@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
-=======
 import 'package:flutter/services.dart';
 import 'package:opa/homeScreen.dart';
->>>>>>> liam
 
 void main() {
   runApp(MyApp());
@@ -16,7 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
       debugShowCheckedModeBanner: false,
       title: 'Elderly',
       theme: ThemeData(
@@ -46,18 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
       debugShowCheckedModeBanner: false,
       home: EventViewer(),
     
-=======
-      theme: ThemeData(
-        textTheme: TextTheme(
-          
-         body2: TextStyle(color: Colors.black) ,
-        )
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: HomeScreen(),
-      ),
->>>>>>> liam
     );
       
   }

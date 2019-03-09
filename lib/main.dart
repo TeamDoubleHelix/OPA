@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:flutter/services.dart';
+import 'package:opa/alertMessage.dart';
 import 'package:opa/homeScreen.dart';
 
 void main() {
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen("Ċettina"),
+      home: AlertMessage(),
     );
       
   }

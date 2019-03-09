@@ -58,28 +58,34 @@ class _SOSPageState extends State<SOSPage> {
 
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: Container(
-          color: backColour,
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.phone_in_talk,
-                size: 120,
-              ),
-              Container(
-                height: 20,
-              ),
-              textCard(Theme.of(context).textTheme.body1, 4, "$_start"),
-              Container(
-                height: 20,
-              ),
-              textCard(Theme.of(context).textTheme.body2, 4,
-                  "Tap anywhere to cancel."),
-            ],
-          )),
+      body: GestureDetector(
+        onTap: () {
+          print("got here");
+          Navigator.of(context).pop();
+        },
+        child: Container(
+            color: backColour,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.phone_in_talk,
+                  size: 120,
+                ),
+                Container(
+                  height: 20,
+                ),
+                textCard(Theme.of(context).textTheme.body1, 4, "$_start"),
+                Container(
+                  height: 20,
+                ),
+                textCard(Theme.of(context).textTheme.body2, 4,
+                    "Tap anywhere to cancel."),
+              ],
+            )),
+      ),
     );
   }
 

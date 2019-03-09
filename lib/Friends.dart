@@ -32,11 +32,15 @@ class _FriendsState extends State<Friends> {
 
   Widget build(BuildContext context) {
 
-    return ListView.builder(
+    return Scaffold(
+    
+    body: ListView.builder(
+      
       itemCount: people.length,
       itemBuilder: (context,index){
         return Profile(people[index]);
       },
+    ),
     );
   }
 }

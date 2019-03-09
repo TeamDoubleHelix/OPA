@@ -24,6 +24,7 @@ String formattedHour = DateFormat('kk').format(now);
   }
   @override 
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Column(
       children: <Widget>[
         Container(
@@ -38,37 +39,54 @@ String formattedHour = DateFormat('kk').format(now);
 
              "Il-waranofsinhar it-tajjeb +$widget.name",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.body2,
-                textScaleFactor: 3.7,
-            ),
-              ),
-              Text(
+=======
+    return Scaffold(
+          body: Column(
+        children: <Widget>[
+          Container(
+            
+            
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
 
-              formattedDate,
-              
-              style: Theme.of(context).textTheme.body2,
-              textScaleFactor: 3.5,
+               "BONGU ",
+                  
+                  style: Theme.of(context).textTheme.body2,
+                  textScaleFactor: 3.7,
+              ),
+                ),
+                Text(
+
+                formattedDate,
+                
+>>>>>>> master
+                style: Theme.of(context).textTheme.body2,
+                textScaleFactor: 3.5,
+              ),
+              ],
             ),
+            decoration: BoxDecoration(color: Colors.amber),
+            
+            width: double.infinity,
+          ),
+          GridView.count(
+            mainAxisSpacing: 15.0,
+            padding: EdgeInsets.all(10.0),
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            childAspectRatio: 0.8,
+            children: <Widget>[
+              MyButton(Icons.calendar_view_day, Colors.teal, 'Events',false, (){}),
+              MyButton(Icons.insert_emoticon, Colors.blue, 'Activity',false, (){}),
+              MyButton(Icons.perm_contact_calendar, Colors.orange,'Friends',false, (){}),
+              MyButton(Icons.accessible, Colors.red[700], 'S.O.S',true, (){}),
             ],
           ),
-          decoration: BoxDecoration(color: Colors.amber),
-          height: 250.0,
-          width: double.infinity,
-        ),
-        GridView.count(
-          mainAxisSpacing: 30.0,
-          padding: EdgeInsets.all(10.0),
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          childAspectRatio: 0.8,
-          children: <Widget>[
-            MyButton(Icons.calendar_view_day, Colors.teal, 'Events',false, (){}),
-            MyButton(Icons.insert_emoticon, Colors.blue, 'Activity',false, (){}),
-            MyButton(Icons.perm_contact_calendar, Colors.orange,'Friends',false, (){}),
-            MyButton(Icons.accessible, Colors.red[700], 'S.O.S',true, (){}),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

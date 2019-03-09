@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:flutter/services.dart';
+import 'package:opa/Texts.dart';
 import 'package:opa/alertMessage.dart';
 import 'package:opa/homeScreen.dart';
 import './Plant.dart';
 import './Puzzles.dart';
+import 'package:tts/tts.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +17,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+    Tts.speak(IntroductionTexts.openApp);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Elderly',

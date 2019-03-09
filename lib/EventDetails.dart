@@ -54,4 +54,6 @@ class EventDetails {
         location: "Gozo",
         going: ["Cettina", "John", "Doris", "Lewis", "Ernest", "Bertha" ])
   ];
+
+  static List<List<EventDetails>> eventDays = [eventsMonday, eventsTuesday, eventsWednesday];
 }

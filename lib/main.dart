@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:flutter/services.dart';
+import 'package:opa/alertMessage.dart';
 import 'package:opa/homeScreen.dart';
 import './Plant.dart';
 import './Puzzles.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Elderly',
       theme: ThemeData(
+        fontFamily: 'Helvetica',
         primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Elderly'),

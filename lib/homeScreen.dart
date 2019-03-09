@@ -1,26 +1,22 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:opa/button.dart';
 import 'package:intl/intl.dart';
+import 'package:opa/Friends.dart';
+import 'package:opa/Time.dart';
+import 'package:opa/button.dart';
+
 import 'package:opa/sosPage.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  static var now = new DateTime.now();
-  String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
-  @override
-  void setState(fn) {
-    // TODO: implement setState
-    super.setState(fn);
-  }
-
+class HomeScreen extends StatelessWidget {
+HomeScreen(this.name);
+final String name;
   @override
   Widget build(BuildContext context) {
+    var dateTime = new DateTime.now();
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -28,18 +24,32 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
                   child: Text(
-                    "BONGU ",
+                    "Merħba $name",
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.body2,
                     textScaleFactor: 3.7,
                   ),
                 ),
-                Text(
-                  formattedDate,
-                  style: Theme.of(context).textTheme.body2,
-                  textScaleFactor: 3.5,
+                Row(
+                  children: <Widget>[
+
+                      TimeClass(),
+
+
+                    Icon(
+                      Icons.wb_sunny,
+                      color: Colors.white,
+                      size: 70,
+                    ),
+
+          
+                    
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
+                
               ],
             ),
             decoration: BoxDecoration(color: Colors.amber),

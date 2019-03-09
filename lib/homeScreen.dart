@@ -31,7 +31,7 @@ String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
 
-             "BONGU OMMOK",
+             "BONGU ",
                 
                 style: Theme.of(context).textTheme.body2,
                 textScaleFactor: 3.7,

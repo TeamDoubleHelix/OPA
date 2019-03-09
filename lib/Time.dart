@@ -25,6 +25,7 @@ class _TimeClassState extends State<TimeClass> {
   }
 
   void refresh(Timer a) {
+    if(this.mounted)
     setState(() {});
   }
 
@@ -37,5 +38,12 @@ class _TimeClassState extends State<TimeClass> {
       style: Theme.of(context).textTheme.body2,
       textScaleFactor: 5.0,
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer.cancel();
   }
 }

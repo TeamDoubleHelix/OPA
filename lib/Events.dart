@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:opa/EventDetails.dart';
+import 'package:opa/Texts.dart';
 import 'package:opa/page.dart';
 import 'package:opa/pageCard.dart';
 import 'package:opa/pageDragger.dart';
 import 'package:opa/sosPage.dart';
+import 'package:tts/tts.dart';
 
 class Events extends StatefulWidget {
   @override
@@ -22,6 +24,8 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    Tts.speak("Events.....Activities on " +
+        Texts.parseWeekday(DateTime.now().weekday + activeIndex));
     super.initState();
 
     slideUpdateStream = new StreamController<SlideUpdate>();
@@ -63,6 +67,9 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
           slidePercent = 0.0;
 
           animatedDragger.dispose();
+
+          Tts.speak("Activities on " +
+              Texts.parseWeekday(DateTime.now().weekday + activeIndex));
         }
       });
     });
@@ -72,8 +79,10 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Page(slidePercent, EventDetails.eventDays[nextIndex], DateTime.now().weekday + nextIndex),
-        Page((1 - slidePercent), EventDetails.eventDays[activeIndex], DateTime.now().weekday + activeIndex),
+        Page(slidePercent, EventDetails.eventDays[nextIndex],
+            DateTime.now().weekday + nextIndex),
+        Page((1 - slidePercent), EventDetails.eventDays[activeIndex],
+            DateTime.now().weekday + activeIndex),
         Column(
           children: <Widget>[
             Expanded(child: Container()),
@@ -88,15 +97,23 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
                     EventDetails.eventDays.length,
                 backgroundColor: Colors.white,
               ),
-            ), RaisedButton(onPressed: (){}, color: Theme.of(context).primaryColorLight, child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Submit Event Request",textAlign: TextAlign.center ,style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
-            ),)
+            ),
+            RaisedButton(
+              onPressed: () {},
+              color: Theme.of(context).primaryColorLight,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Submit Event Request",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                ),
+              ),
+            )
           ],
         ),
-        PageDragger(
-            slideUpdateStream, activeIndex > 0, activeIndex < EventDetails.eventDays.length - 1),
-            
+        PageDragger(slideUpdateStream, activeIndex > 0,
+            activeIndex < EventDetails.eventDays.length - 1),
       ],
     );
   }

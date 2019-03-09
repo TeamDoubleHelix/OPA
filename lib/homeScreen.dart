@@ -61,34 +61,34 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisCount: 2,
             childAspectRatio: 0.8,
             children: <Widget>[
-              MyButton(Icons.calendar_view_day, Colors.teal, 'Events', false,
+              MyButton(Icons.event,null, Colors.teal, 'Events', false,
                   () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => EventViewer()),
                 );
-              }),
-              MyButton(Icons.insert_emoticon, Colors.blue, 'Puzzles', false,
+              }, Texts.openEvents()),
+              MyButton(null,ImageIcon(new AssetImage("assets/puzzle.png"),size: 175,color: Colors.blue,), Colors.blue, 'Puzzles', false,
                   () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Puzzles()),
                 );
-              }),
+              }, Texts.openPuzzles()),
               MyButton(
-                  Icons.perm_contact_calendar, Colors.orange, 'Friends', false,
+                  Icons.people,null, Colors.orange, 'Friends', false,
                   () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Friends()),
                 );
-              }),
-              MyButton(Icons.accessible, Colors.red[700], 'S.O.S', true, () {
+              }, Texts.openFriends()),
+              MyButton(Icons.local_hospital,null, Colors.red[700], 'S.O.S', true, () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SOSPage()),
                 );
-              }),
+              }, Texts.openSOS()),
             ],
           ),
         ],

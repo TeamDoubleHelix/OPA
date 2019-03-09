@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tts/tts.dart';
 import './Profile.dart';
 
 class Friends extends StatefulWidget {
@@ -33,6 +34,7 @@ class _FriendsState extends State<Friends> {
     super.initState();
 
     style = new TextStyle(fontSize: 30);
+    Tts.speak("Friends list");
   }
 
   Widget build(BuildContext context) {

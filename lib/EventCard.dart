@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:opa/EventDetails.dart';
 import 'package:opa/SingleEventView.dart';
+import 'package:tts/tts.dart';
 import 'pageCard.dart';
 
 class EventCard extends PageCard {
@@ -16,6 +17,9 @@ class EventCard extends PageCard {
 
   Widget buildInternal(BuildContext context) {
     return InkWell(
+      onLongPress: () {
+        Tts.speak("${_details.title} : ${_details.description}");
+      },
       onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => SingleEventView(_details)),

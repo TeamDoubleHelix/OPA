@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:opa/CoffeeOffer.dart';
+import 'package:tts/tts.dart';
 
 class CoffeeTime extends StatelessWidget {
   final List<CoffeeOffer> offers;
@@ -11,6 +12,8 @@ class CoffeeTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Tts.speak("Meeting up with friends.");
+
     return ListView.builder(
       itemCount: offers.length + 1,
       itemBuilder: (context, index) {

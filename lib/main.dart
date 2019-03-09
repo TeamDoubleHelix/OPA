@@ -4,6 +4,7 @@ import 'package:opa/Friends.dart';
 import 'package:flutter/services.dart';
 import 'package:opa/Texts.dart';
 import 'package:opa/alertMessage.dart';
+import 'package:opa/flag.dart';
 import 'package:opa/homeScreen.dart';
 import './Plant.dart';
 import './Puzzles.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.teal[400],
         accentColor: Colors.teal[400],
       ),
-      home: HomeScreen("Cettina"),
+      home: AlertMessage(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:opa/EventCard.dart';
 import 'package:opa/EventDetails.dart';
+import 'package:tts/tts.dart';
 
 class SingleEventView extends StatelessWidget {
   final EventDetails details;
@@ -29,17 +30,22 @@ class SingleEventView extends StatelessWidget {
       bodyStyle = const TextStyle(fontSize: 24),
       IconData icon}) {
     return Card(
-      child: Padding(
-        padding: EdgeInsets.all(6.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            icon != null
-                ? iconText(icon, title, titleStyle)
-                : Text(title, style: titleStyle),
-            Divider(),
-            Text(body, style: bodyStyle),
-          ],
+      child: InkWell(
+        onLongPress: () {
+          Tts.speak("$title : $body");
+        },
+        child: Padding(
+          padding: EdgeInsets.all(6.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              icon != null
+                  ? iconText(icon, title, titleStyle)
+                  : Text(title, style: titleStyle),
+              Divider(),
+              Text(body, style: bodyStyle),
+            ],
+          ),
         ),
       ),
     );
@@ -65,7 +71,10 @@ class SingleEventView extends StatelessWidget {
           RaisedButton(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Going!", style: TextStyle(fontSize: 34),),
+              child: Text(
+                "Going!",
+                style: TextStyle(fontSize: 34),
+              ),
             ),
             color: Colors.green,
             onPressed: () {},
@@ -73,7 +82,10 @@ class SingleEventView extends StatelessWidget {
           RaisedButton(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Need Transport!", style: TextStyle(fontSize: 34), ),
+              child: Text(
+                "Need Transport!",
+                style: TextStyle(fontSize: 34),
+              ),
             ),
             color: Colors.amber,
             onPressed: () {},
@@ -87,18 +99,28 @@ class SingleEventView extends StatelessWidget {
       {titleStyle = const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
       bodyStyle = const TextStyle(fontSize: 24)}) {
     return Card(
-      child: Column(
-        children: <Widget>[
-          Text("Going", style: titleStyle),
-          Divider(),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: people.length,
-            itemBuilder: (context, index) {
-              return Padding(padding:EdgeInsets.all(5.0), child: Text(people[index], style: bodyStyle,));
-            },
-          )
-        ],
+      child: InkWell(
+        onLongPress: (){
+          Tts.speak("People going : ${people}");
+        },
+              child: Column(
+          children: <Widget>[
+            Text("Going", style: titleStyle),
+            Divider(),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: people.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Text(
+                      people[index],
+                      style: bodyStyle,
+                    ));
+              },
+            )
+          ],
+        ),
       ),
     );
   }

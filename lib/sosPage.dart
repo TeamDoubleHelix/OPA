@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:tts/tts.dart';
 
 class SOSPage extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _SOSPageState extends State<SOSPage> {
         (Timer timer) => setState(() {
               if (_start < 1) {
                 timer.cancel();
+                Tts.speak("Beginning call...");
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -40,6 +42,7 @@ class _SOSPageState extends State<SOSPage> {
                 );
               } else {
                 _start = _start - 1;
+                if (_start < 6) Tts.speak("$_start");
               }
             }));
   }
@@ -48,6 +51,7 @@ class _SOSPageState extends State<SOSPage> {
   void initState() {
     super.initState();
     startTimer();
+    Tts.speak("Calling for help. Tap anywhere to cancel.");
   }
 
   @override
@@ -60,7 +64,7 @@ class _SOSPageState extends State<SOSPage> {
     return new Scaffold(
       body: GestureDetector(
         onTap: () {
-          print("got here");
+          Tts.speak("Cancelling phone call...");
           Navigator.of(context).pop();
         },
         child: Container(

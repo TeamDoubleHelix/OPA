@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    Tts.speak(IntroductionTexts.openApp);
+    Texts.initialise(false);
+    Tts.speak(Texts.openApp());
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

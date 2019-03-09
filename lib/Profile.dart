@@ -10,10 +10,12 @@ class Profile extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     
+    
     return Card(
     
       child: Container(
         height: 90,
+
         
         child:Center(
           child:Row(
@@ -22,8 +24,10 @@ class Profile extends StatelessWidget{
             Icon(Icons.person, size: 70,),
           
             Text(" "+p.name+" ", textScaleFactor: 5,),
+            Expanded(child: Container(),),
             IconButton(
-              icon: Icon(Icons.call,size: 60,),
+              icon: Icon(Icons.call),
+              iconSize: 40,
               onPressed: (){
                 print('hey');
               }

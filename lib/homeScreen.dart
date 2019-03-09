@@ -4,14 +4,18 @@ import 'package:intl/intl.dart';
 
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen(this.name);
+  final String name;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
 static var now = new DateTime.now();
 String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
+String formattedHour = DateFormat('kk').format(now);
 @override
   void setState(fn) {
     // TODO: implement setState
@@ -29,10 +33,11 @@ String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Text(
 
-             "BONGU ",
-                
+                child: Text(  
+
+             "Il-waranofsinhar it-tajjeb +$widget.name",
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.body2,
                 textScaleFactor: 3.7,
             ),

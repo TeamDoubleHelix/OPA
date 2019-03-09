@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: HomeScreen(),
+        body: HomeScreen("Cettina"),
       ),
     );
   }

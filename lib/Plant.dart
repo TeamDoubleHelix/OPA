@@ -11,16 +11,24 @@ class _PlantPageState extends State<PlantPage> {
   String currentImage = 'assets/images/wateringCan.png';
   String plantState = 'assets/images/plant1.png';
   int counter = 1;
+
+  TextStyle style;
   //String initialState = 'assets/images/initial/';
 
   double _start;
   double pouringState;
   Timer _timer;
   @override
+
+  void initState() {
+    super.initState();
+
+    style = new TextStyle(fontSize: 30);
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Growing Plant'),
+        title: Text('Growing Plant',textScaleFactor: 2.1,),
       ),
       body: Center(
         child: Row(

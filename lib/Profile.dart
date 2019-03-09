@@ -14,6 +14,7 @@ class Profile extends StatelessWidget{
     
       child: Container(
         height: 90,
+
         
         child:Center(
           child:Row(
@@ -23,7 +24,8 @@ class Profile extends StatelessWidget{
           
             Text(" "+p.name+" ", textScaleFactor: 5,),
             IconButton(
-              icon: Icon(Icons.call,size: 60,),
+              icon: Icon(Icons.call),
+              iconSize: 40,
               onPressed: (){
                 print('hey');
               }

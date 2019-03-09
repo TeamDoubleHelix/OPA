@@ -11,7 +11,7 @@ import 'package:opa/Time.dart';
 import 'package:opa/button.dart';
 
 import 'package:opa/sosPage.dart';
-import 'package:tts/tts.dart';
+//import 'package:tts/tts.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -22,17 +22,6 @@ final String name;
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
-
-speak() async {
-  setState(() {
-      Tts.speak("a");
-  });
-
-}
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,29 +71,12 @@ speak() async {
             crossAxisCount: 2,
             childAspectRatio: 0.8,
             children: <Widget>[
-<<<<<<< HEAD
               MyButton(Icons.calendar_view_day, Colors.teal, 'Events', false,
                   () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => EventViewer()),
                 );
-=======
-              
-             
-
-              MyButton(
-                
-                  Icons.event_available, Colors.teal, 'Events', false, speak,),
-              MyButton(
-                Icons.perm_media, Colors.blue, 'Puzzles', false, () {}),
-              MyButton(Icons.people, Colors.orange, 'Friends',
-                  false, () {
-                     Navigator.push(context, MaterialPageRoute( builder: (context)=> Friends()));
-                  }),
-              MyButton(Icons.local_hospital, Colors.red[700], 'S.O.S', true, () {
-                Navigator.push(context, MaterialPageRoute( builder: (context)=> SOSPage()));
->>>>>>> liam
               }),
               MyButton(
                   Icons.insert_emoticon, Colors.blue, 'Puzzles', false, () {Navigator.push(

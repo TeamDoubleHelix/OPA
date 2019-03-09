@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:opa/EventDetails.dart';
+import 'package:opa/SingleEventView.dart';
 import 'pageCard.dart';
 
-class EventCard extends PageCard{
+class EventCard extends PageCard {
+  final EventDetails _details;
+  TextStyle _style, _bodyStyle;
 
-  final String _text, _body;
-  final TextStyle _style, _bodyStyle;
-
-  EventCard(this._text, this._style, this._body, this._bodyStyle);
+  EventCard(this._details,
+      {titleStyle = const TextStyle(fontSize: 46, fontWeight: FontWeight.bold),
+      bodyStyle = const TextStyle(fontSize: 36)}) {
+    _style = titleStyle;
+    _bodyStyle = bodyStyle;
+  }
 
   Widget buildInternal(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(_text, style: _style),
-        Divider(),
-        Text(_body, style: _bodyStyle),
-      ],
+    return InkWell(
+      onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SingleEventView(_details)),
+          ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(_details.title, style: _style),
+          Divider(),
+          Text(_details.description, style: _bodyStyle),
+        ],
+      ),
     );
   }
-    
 }

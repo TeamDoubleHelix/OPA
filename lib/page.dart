@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:opa/EventDetails.dart';
 import 'package:opa/EventCard.dart';
+import 'package:opa/SingleEventView.dart';
 import 'pageCard.dart';
 
 class Page extends StatelessWidget {
@@ -11,10 +12,7 @@ class Page extends StatelessWidget {
     var cards = List<PageCard>();
     for (int i = 0; i < eventsToday.length; i++) {
       cards.add(new EventCard(
-        eventsToday[i].title,
-        TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        eventsToday[i].description,
-        TextStyle(fontSize: 24),
+        eventsToday[i],
       ));
     }
 
@@ -48,7 +46,7 @@ class Page extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Text(_parseWeekday(_model.dayOfWeek),
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 50,
                             fontWeight: FontWeight.bold,
                           )),
                     ),

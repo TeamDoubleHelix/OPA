@@ -10,7 +10,8 @@ abstract class PageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Card(
-      elevation: 10.0,
+      color: Colors.grey[300],
+      elevation: 4.0,
       child:  Padding(
         padding: const EdgeInsets.all(8.0),
         child: buildInternal(context),

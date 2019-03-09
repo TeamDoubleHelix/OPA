@@ -10,6 +10,7 @@ class Profile extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     
+    
     return Card(
     
       child: Container(
@@ -23,6 +24,7 @@ class Profile extends StatelessWidget{
             Icon(Icons.person, size: 70,),
           
             Text(" "+p.name+" ", textScaleFactor: 5,),
+            Expanded(child: Container(),),
             IconButton(
               icon: Icon(Icons.call),
               iconSize: 40,

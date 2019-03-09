@@ -33,6 +33,11 @@ class _FriendsState extends State<Friends> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(),
+        title: Text('Friends', textScaleFactor: 2.7, ),
+
+      ),
     
     body: ListView.builder(
       

@@ -3,6 +3,8 @@ import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:flutter/services.dart';
 import 'package:opa/homeScreen.dart';
+import './Plant.dart';
+import './Puzzles.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: Friends(),
     
     );
       

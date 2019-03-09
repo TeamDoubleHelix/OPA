@@ -1,9 +1,9 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
 import 'package:opa/Puzzles.dart';
+import 'package:opa/Texts.dart';
 import 'package:opa/button.dart';
 import 'package:intl/intl.dart';
 import 'package:opa/Friends.dart';
@@ -13,19 +13,16 @@ import 'package:opa/button.dart';
 import 'package:opa/sosPage.dart';
 //import 'package:tts/tts.dart';
 
-
 class HomeScreen extends StatefulWidget {
-HomeScreen(this.name);
-final String name;
+  HomeScreen(this.name);
+  final String name;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -43,22 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Row(
                   children: <Widget>[
-
-                      TimeClass(),
-
-
+                    TimeClass(),
                     Icon(
                       Icons.wb_sunny,
                       color: Colors.white,
                       size: 70,
                     ),
-
-          
-                    
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
-                
               ],
             ),
             decoration: BoxDecoration(color: Colors.amber),
@@ -78,20 +68,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(builder: (context) => EventViewer()),
                 );
               }),
-              MyButton(
-                  Icons.insert_emoticon, Colors.blue, 'Puzzles', false, () {Navigator.push(
+              MyButton(Icons.insert_emoticon, Colors.blue, 'Puzzles', false,
+                  () {
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Puzzles()),
-                );}),
-              MyButton(Icons.perm_contact_calendar, Colors.orange, 'Friends',
-                  false, () {Navigator.push(
+                );
+              }),
+              MyButton(
+                  Icons.perm_contact_calendar, Colors.orange, 'Friends', false,
+                  () {
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Friends()),
-                );}),
-              MyButton(Icons.accessible, Colors.red[700], 'S.O.S', true, () {Navigator.push(
+                );
+              }),
+              MyButton(Icons.accessible, Colors.red[700], 'S.O.S', true, () {
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SOSPage()),
-                );}),
+                );
+              }),
             ],
           ),
         ],
@@ -99,4 +96,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

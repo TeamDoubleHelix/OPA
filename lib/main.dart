@@ -19,34 +19,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Elderly',
       theme: ThemeData(
-        fontFamily: 'Helvetica',
-        primarySwatch: Colors.red,
+        fontFamily: 'Overpass',
+        primaryColor: Colors.teal[400],
+        accentColor: Colors.teal[400],
       ),
-      home: MyHomePage(title: 'Elderly'),
+      home: HomeScreen("Cettina"),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Friends(),
-    
-    );
-      
   }
 }

@@ -58,17 +58,23 @@ class SingleEventView extends StatelessWidget {
 
   Widget _attend() {
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(5),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           RaisedButton(
-            child: Text("Going!"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Going!", style: TextStyle(fontSize: 34),),
+            ),
             color: Colors.green,
             onPressed: () {},
           ),
           RaisedButton(
-            child: Text("Need Transport!"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Need Transport!", style: TextStyle(fontSize: 34), ),
+            ),
             color: Colors.amber,
             onPressed: () {},
           ),

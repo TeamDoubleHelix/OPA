@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
+import 'package:opa/Puzzles.dart';
 import 'package:opa/button.dart';
 import 'package:intl/intl.dart';
 import 'package:opa/Friends.dart';
@@ -70,7 +71,10 @@ final String name;
                 );
               }),
               MyButton(
-                  Icons.insert_emoticon, Colors.blue, 'Puzzles', false, () {}),
+                  Icons.insert_emoticon, Colors.blue, 'Puzzles', false, () {Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Puzzles()),
+                );}),
               MyButton(Icons.perm_contact_calendar, Colors.orange, 'Friends',
                   false, () {Navigator.push(
                   context,

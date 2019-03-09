@@ -88,11 +88,15 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
                     EventDetails.eventDays.length,
                 backgroundColor: Colors.white,
               ),
-            )
+            ), RaisedButton(onPressed: (){}, color: Theme.of(context).primaryColorLight, child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Submit Event Request",textAlign: TextAlign.center ,style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
+            ),)
           ],
         ),
         PageDragger(
             slideUpdateStream, activeIndex > 0, activeIndex < EventDetails.eventDays.length - 1),
+            
       ],
     );
   }

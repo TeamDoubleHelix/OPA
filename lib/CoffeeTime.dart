@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:opa/CoffeeOffer.dart';
 
 class CoffeeTime extends StatelessWidget {
-  List<CoffeeOffer> offers;
+  final List<CoffeeOffer> offers;
   TextStyle titleStyle =
           const TextStyle(fontSize: 46, fontWeight: FontWeight.bold),
       bodyStyle = const TextStyle(fontSize: 36);

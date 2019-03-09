@@ -19,29 +19,36 @@ class _PlantPageState extends State<PlantPage> {
   double pouringState;
   Timer _timer;
   @override
-
   void initState() {
     super.initState();
 
     style = new TextStyle(fontSize: 30);
   }
+
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Growing Plant',textScaleFactor: 2.1,),
+        title: Text(
+          'Growing Plant',
+          textScaleFactor: 2.1,
+        ),
       ),
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-                    transform: Matrix4.translationValues(60, 50, 0),
+                transform: Matrix4.translationValues(60, 50, 0),
                 width: (MediaQuery.of(context).size.width - 40) / 2,
                 child: Image.asset(plantState)),
             Transform(
-                      transform: Matrix4.translationValues(-50, -140, 0),
-                          child: new InkWell(
-                
+              transform: Matrix4.translationValues(-50, -140, 0),
+              child: new InkWell(
                 child: Padding(
                   child: Container(
                       width: (MediaQuery.of(context).size.width - 40) / 2,
@@ -62,11 +69,10 @@ class _PlantPageState extends State<PlantPage> {
                               //print("active ${_timer.isActive}");
                               //print("equal ${timer == _timer}");
                               currentImage = 'assets/images/wateringCan.png';
-                              if(counter>6){
-                                counter=1;
+                              if (counter > 6) {
+                                counter = 1;
                               }
                               plantState = 'assets/images/plant${counter}.png';
-                              
 
                               //todo: ending loop plants
 
@@ -87,7 +93,8 @@ class _PlantPageState extends State<PlantPage> {
                               print("pouring state : $pouringState");
                               print(
                                   "image state : ${(((pouringState * 2) % 2) + 1)}");
-                              int state = (((pouringState * 2) % 2) + 1).toInt();
+                              int state =
+                                  (((pouringState * 2) % 2) + 1).toInt();
                               currentImage = 'assets/images/pouring$state.png';
                             }
                           }));
@@ -98,7 +105,6 @@ class _PlantPageState extends State<PlantPage> {
                 },
               ),
             ),
-
           ],
         ),
       ),

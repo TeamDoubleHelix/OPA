@@ -27,8 +27,8 @@ class MyButton extends StatelessWidget {
             ),
             Text(
               buttonName,
-              style: Theme.of(context).textTheme.body2,
-              textScaleFactor: 3.5,
+              style: TextStyle( fontWeight: FontWeight.bold),
+              textScaleFactor: 3.4,
             )
           ],
         ),

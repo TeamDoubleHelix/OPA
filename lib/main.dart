@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:opa/EventViewer.dart';
 import 'package:opa/Friends.dart';
+import 'package:flutter/services.dart';
+import 'package:opa/homeScreen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+  SystemChrome.setEnabledSystemUIOverlays([]);
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -35,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Friends(),
+      home: HomeScreen(),
     
     );
       

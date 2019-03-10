@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:opa/EventDetails.dart';
+import 'package:opa/FirebaseHandler.dart';
 import 'package:opa/Texts.dart';
 import 'package:opa/page.dart';
 import 'package:opa/pageCard.dart';
@@ -15,6 +16,9 @@ class Events extends StatefulWidget {
 }
 
 class _EventsState extends State<Events> with TickerProviderStateMixin {
+
+  List<List<EventDetails>> events;
+
   StreamController<SlideUpdate> slideUpdateStream;
   PseudoPageDragger animatedDragger;
   int activeIndex = 0;
@@ -27,6 +31,8 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
     Tts.speak("Events.....Activities on " +
         Texts.parseWeekday(DateTime.now().weekday + activeIndex));
     super.initState();
+events = new List<List<EventDetails>>();
+    FirebaseHandler.getEvents().then((e) => setState(() => events = e));
 
     slideUpdateStream = new StreamController<SlideUpdate>();
     slideUpdateStream.stream.listen((SlideUpdate event) {
@@ -43,7 +49,7 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
           else
             nextIndex = activeIndex;
 
-          nextIndex.clamp(0.0, EventDetails.eventDays.length - 1);
+          nextIndex.clamp(0.0, events.length - 1);
         } else if (event.type == UpdateType.doneDragging) {
           if (slidePercent > 0.3) {
             animatedDragger = new PseudoPageDragger(slideDirection,
@@ -79,10 +85,10 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Page(slidePercent, EventDetails.eventDays[nextIndex],
-            DateTime.now().weekday + nextIndex),
-        Page((1 - slidePercent), EventDetails.eventDays[activeIndex],
-            DateTime.now().weekday + activeIndex),
+        events.length > 0 ? Page(slidePercent, events[nextIndex],
+            DateTime.now().weekday + nextIndex) : _placeHolder() ,
+        events.length > 0 ? Page((1 - slidePercent), events[activeIndex],
+            DateTime.now().weekday + activeIndex) : _placeHolder(),
         Column(
           children: <Widget>[
             Expanded(child: Container()),
@@ -94,7 +100,7 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
                         (slideDirection == SlideDirection.leftToRight
                             ? -slidePercent
                             : slidePercent)) /
-                    EventDetails.eventDays.length,
+                    (events.length == 0 ? 1 :events.length),
                 backgroundColor: Colors.white,
               ),
             ),
@@ -113,7 +119,7 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
           ],
         ),
         PageDragger(slideUpdateStream, activeIndex > 0,
-            activeIndex < EventDetails.eventDays.length - 1),
+            activeIndex < events.length - 1),
       ],
     );
   }
@@ -126,6 +132,10 @@ class _EventsState extends State<Events> with TickerProviderStateMixin {
             style: Theme.of(context).textTheme.display2)
       ],
     );
+  }
+
+  Widget _placeHolder(){
+    return Center(child: CircularProgressIndicator(),);
   }
 }
 

@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:opa/CoffeeOffer.dart';
+import 'package:opa/FirebaseHandler.dart';
 import 'package:tts/tts.dart';
 
-class CoffeeTime extends StatelessWidget {
-  final List<CoffeeOffer> offers;
+class CoffeeTime extends StatefulWidget {
+  @override
+  _CoffeeTimeState createState() => _CoffeeTimeState();
+}
+
+class _CoffeeTimeState extends State<CoffeeTime> {
   TextStyle titleStyle =
           const TextStyle(fontSize: 46, fontWeight: FontWeight.bold),
       bodyStyle = const TextStyle(fontSize: 36);
 
-  CoffeeTime({this.offers = CoffeeOffer.test});
+  List<CoffeeOffer> offers;
+
+  @override
+  void initState() {
+    super.initState();
+
+    offers = new List<CoffeeOffer>();
+    FirebaseHandler.getOffer().then((o) => setState(() {
+          offers = CoffeeOffer.test;
+        }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +45,10 @@ class CoffeeTime extends StatelessWidget {
                     builder: (BuildContext context) {
                       // return object of type Dialog
                       return AlertDialog(
-                        title: new Text("Show this code to the cashier to redeem this voucher!"),
-                        content: new Image.network(offers[index-1].url),
+                        title: new Text(
+                            "Show this code to the cashier to redeem this voucher!"),
+                        content:
+                            new Image.network(offers[index - 1].url),
                       );
                     },
                   );
@@ -39,7 +56,8 @@ class CoffeeTime extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Center(child: Image.network(offers[index - 1].image)),
+                    Center(
+                        child: Image.network(offers[index - 1].image)),
                     Divider(),
                     Text(offers[index - 1].place, style: titleStyle),
                     Divider(),

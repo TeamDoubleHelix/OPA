@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "543727490403",
+    "firebase_url": "https://ghaqda.firebaseio.com",
+    "project_id": "ghaqda",
+    "storage_bucket": "ghaqda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543727490403:android:e1d1397cca443eb5",
+        "android_client_info": {
+          "package_name": "com.example.opa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543727490403-1f85ni7dcnouckbgvs45s0b7lromu5k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXuar6HZzaBq8oz5dndZU1TNCSntGgHgM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -27,6 +27,7 @@ class _PlantPageState extends State<PlantPage> {
 
   void dispose() {
     super.dispose();
+    if(_timer != null)
     _timer.cancel();
   }
 

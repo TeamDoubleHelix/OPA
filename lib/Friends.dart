@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:opa/EventDetails.dart';
+import 'package:opa/FirebaseHandler.dart';
 import 'package:tts/tts.dart';
 import './Profile.dart';
 
@@ -23,15 +25,15 @@ class Person {
 
 class _FriendsState extends State<Friends> {
   TextStyle style;
-  List<Person> people = [
-    Person('Harry', 21324675),
-    Person('Mary', 46372876),
-    Person('Jack', 473829384)
-  ];
+  List<Person> people;
 
   @override
   void initState() {
     super.initState();
+
+    FirebaseHandler.getPeople().then((p) => setState(() {
+          people = p;
+        }));
 
     style = new TextStyle(fontSize: 30);
     Tts.speak("Friends list");
@@ -47,15 +49,24 @@ class _FriendsState extends State<Friends> {
         ),
       ),
       body: ListView.builder(
-        itemCount: people.length,
+        itemCount: people == null ? 1 : people.length,
         itemBuilder: (context, index) {
-          return Profile(people[index]);
+          if (people != null)
+            return Profile(people[index]);
+          else
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center( child: CircularProgressIndicator()),
+            );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          FirebaseHandler.addEvent(EventDetails.eventsWednesday[0]);
+          FirebaseHandler.addEvent(EventDetails.eventsWednesday[1]);
+        },
         child: Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }

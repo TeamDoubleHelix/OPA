@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:opa/Texts.dart';
+import 'package:tts/tts.dart';
 import './Plant.dart';
 
 class Puzzles extends StatefulWidget {
@@ -15,7 +17,7 @@ class _PuzzlesState extends State<Puzzles> {
   @override
   void initState() {
     super.initState();
-
+    Tts.speak("Puzzles");
     style = new TextStyle(fontSize: 30);
   }
 
@@ -36,6 +38,7 @@ class _PuzzlesState extends State<Puzzles> {
             new Card(
                 elevation: 20,
                 child: new InkWell(
+                  onLongPress: () => Tts.speak(Texts.plantDescription()),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -54,9 +57,9 @@ class _PuzzlesState extends State<Puzzles> {
                 color: Theme.of(context).primaryColor,
                 child: Text(
                   'Crossword',
-                  style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 50),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
                 ),
-                onPressed: () {},
+                onPressed:() => Tts.speak(Texts.crosswords()),
               ),
             ),
             SizedBox(
@@ -71,7 +74,7 @@ class _PuzzlesState extends State<Puzzles> {
                   'AlphaDoku',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
                 ),
-                onPressed: () {},
+                onPressed: () => Tts.speak(Texts.alphadoku()),
               ),
             ),
             SizedBox(
@@ -84,9 +87,9 @@ class _PuzzlesState extends State<Puzzles> {
                 color: Theme.of(context).primaryColor,
                 child: Text(
                   'Memory',
-                  style:TextStyle(fontWeight: FontWeight.bold,  fontSize: 50),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
                 ),
-                onPressed: () {},
+                onPressed: () => Tts.speak(Texts.memory()),
               ),
             ),
           ],

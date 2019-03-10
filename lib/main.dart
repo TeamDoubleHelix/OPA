@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     
     Texts.initialise(false);
-    Tts.speak(Texts.openApp());
+    Tts.speak(Texts.openApp("John"));
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

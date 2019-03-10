@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:opa/alertDialog.dart';
 import 'package:tts/tts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SOSPage extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class SOSPage extends StatefulWidget {
 
 class _SOSPageState extends State<SOSPage> {
   var backColour = Colors.deepOrange, accentColour = Colors.red;
+  bool phoned = false;
 
   Timer _timer;
   int _start = 10;
@@ -21,25 +24,11 @@ class _SOSPageState extends State<SOSPage> {
               if (_start < 1) {
                 timer.cancel();
                 Tts.speak("Beginning call...");
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    // return object of type Dialog
-                    return AlertDialog(
-                      title: new Text("Phoning Relative"),
-                      content: new Text("..."),
-                      actions: <Widget>[
-                        // usually buttons at the bottom of the dialog
-                        new FlatButton(
-                          child: new Text("Close"),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
+                Alert.showAlert(context, "Phoning Relative", "...");
+                canLaunch("tel:79081300").then((l) {
+                  if (l) launch("tel://79081300");
+                });
+                phoned = true;
               } else {
                 _start = _start - 1;
                 if (_start < 6) Tts.speak("$_start");
@@ -64,7 +53,7 @@ class _SOSPageState extends State<SOSPage> {
     return new Scaffold(
       body: GestureDetector(
         onTap: () {
-          Tts.speak("Cancelling phone call...");
+          if (!phoned) Tts.speak("Cancelling phone call...");
           Navigator.of(context).pop();
         },
         child: Container(

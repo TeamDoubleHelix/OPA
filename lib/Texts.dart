@@ -5,8 +5,8 @@ class Texts {
     isMaltese = maltese;
   }
 
-  static String openApp() {
-    return isMaltese ? Maltese.openApp : English.openApp;
+  static String openApp(String name) {
+    return (isMaltese ? Maltese.openApp : English.openApp) + name + "?";
   }
 
   static String openFriends() {
@@ -23,6 +23,22 @@ class Texts {
 
   static String openSOS() {
     return isMaltese ? Maltese.openSOS : English.openSOS;
+  }
+
+  static String plantDescription() {
+    return isMaltese ? Maltese.plantDescription : English.plantDescription;
+  }
+
+  static String crosswords() {
+    return isMaltese ? Maltese.crosswords : English.crosswords;
+  }
+
+  static String alphadoku() {
+    return isMaltese ? Maltese.alphadoku : English.alphadoku;
+  }
+
+  static String memory() {
+    return isMaltese ? Maltese.memory : English.memory;
   }
 
   static String parseWeekday(int day) {
@@ -57,13 +73,21 @@ class Maltese {
       openEvents = "",
       openPuzzles = "",
       openFriends = "",
-      openSOS = "";
+      openSOS = "",
+      plantDescription = "",
+      crosswords = "",
+      alphadoku = "",
+      memory = "";
 }
 
 class English {
-  static const String openApp = "Hello! Welcome to...",
+  static const String openApp = "Hello! What would you like to do today ",
       openEvents = "View events near you.",
       openPuzzles = "Puzzles to keep you mentally active.",
       openFriends = "Contact your friends.",
-      openSOS = "Emergency contact.";
+      openSOS = "Emergency contact.",
+      plantDescription = "View your plant!",
+      crosswords = "Do a crossword!",
+      alphadoku = "Play alpha dohku",
+      memory = "Test your memory!";
 }

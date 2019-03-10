@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:opa/alertDialog.dart';
 import 'package:tts/tts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import './Friends.dart';
 
 class Profile extends StatelessWidget {
@@ -34,7 +36,10 @@ class Profile extends StatelessWidget {
                   icon: Icon(Icons.call),
                   iconSize: 40,
                   onPressed: () {
-                    print('hey');
+                    Tts.speak("Phoning: ${p.name}");
+                    canLaunch("tel:${p.number}").then((l) {
+                  if (l) launch("tel:${p.number}");
+                });
                   })
             ],
           ))),

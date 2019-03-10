@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
                   child: Text(
-                    "Merħba ${widget.name}",
+                    "Welcome ${widget.name}",
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.body2,
                     textScaleFactor: 3.7,
